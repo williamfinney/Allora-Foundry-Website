@@ -372,6 +372,20 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .footer-logo { height: 20px; opacity: 0.6; }
 
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
 .footer-inner p {
   font-size: 14px;
   margin: 0;
@@ -525,5 +539,48 @@ ul { margin: 0; padding: 0; list-style: none; }
 .logo-swingai-dot {
   color: #2A5239;
   margin: 0 1px;
+}
+
+/* Legal pages */
+
+.legal-container {
+  max-width: 760px;
+}
+
+.legal-container h2 {
+  font-size: clamp(28px, 3.5vw, 38px);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.legal-updated {
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.legal-container h3 {
+  font-size: 18px;
+  color: var(--navy);
+  margin: 32px 0 12px;
+}
+
+.legal-container p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 4px;
+}
+
+.legal-container a {
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+.legal-disclaimer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--slate);
 }
 
