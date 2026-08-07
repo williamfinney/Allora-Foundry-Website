@@ -1,19 +1,19 @@
 :root {
-  --navy: #0D1526;
-  --slate: #8B96A8;
-  --slate-light: #C7CDD8;
-  --bg: #F7F7F5;
-  --bg-alt: #EFEEEA;
+  --navy: #0F2A1E;
+  --slate: #6E8C74;
+  --slate-light: #A9BBAE;
+  --bg: #F6F5F0;
+  --bg-alt: #EDEBE3;
   --text-primary: #14140F;
-  --text-muted: #55565E;
-  --border: #E2E1DB;
+  --text-muted: #55564E;
+  --border: #DEDCD0;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --max-width: 1120px;
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 150px; }
+html { scroll-behavior: smooth; scroll-padding-top: 175px; }
 
 body {
   margin: 0;
@@ -55,12 +55,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
+  height: 175px;
   padding: 0 32px;
 }
 
 .logo-img {
-  height: 115px;
+  height: 140px;
   width: auto;
 }
 
