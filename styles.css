@@ -13,7 +13,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 175px; }
+html { scroll-behavior: smooth; scroll-padding-top: 125px; }
 
 body {
   margin: 0;
@@ -91,12 +91,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 175px;
+  height: 125px;
   padding: 0 32px;
 }
 
 .logo-img {
-  height: 140px;
+  height: 95px;
   width: auto;
 }
 
