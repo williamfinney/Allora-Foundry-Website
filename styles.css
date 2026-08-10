@@ -24,6 +24,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Ambient background diamonds */
+
+.bg-diamonds {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-diamond {
+  position: absolute;
+  display: block;
+  border-radius: 14%;
+  background: var(--navy);
+  transform: rotate(45deg);
+  animation-name: diamond-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.bd1 { top: 8%; left: 5%; width: 90px; height: 90px; opacity: 0.18; animation-duration: 16s; animation-delay: 0s; }
+.bd2 { top: 18%; right: 8%; width: 60px; height: 60px; background: var(--slate); opacity: 0.22; animation-duration: 12s; animation-delay: 1.2s; }
+.bd3 { top: 48%; left: 3%; width: 50px; height: 50px; background: var(--slate); opacity: 0.18; animation-duration: 14s; animation-delay: 2.4s; }
+.bd4 { top: 62%; right: 6%; width: 110px; height: 110px; opacity: 0.15; animation-duration: 19s; animation-delay: 0.6s; }
+.bd5 { bottom: 10%; left: 10%; width: 65px; height: 65px; background: var(--slate); opacity: 0.2; animation-duration: 13s; animation-delay: 1.8s; }
+.bd6 { bottom: 18%; right: 14%; width: 45px; height: 45px; opacity: 0.22; animation-duration: 15s; animation-delay: 3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-diamond { animation: none; }
+}
+
+@media (max-width: 860px) {
+  .bg-diamonds { display: none; }
+}
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -253,6 +289,38 @@ ul { margin: 0; padding: 0; list-style: none; }
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 32px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 42, 30, 0.1);
+}
+
+.card.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.card.reveal.reveal-visible {
+  animation: card-reveal 0.6s ease forwards;
+}
+
+@keyframes card-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card.reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .card.reveal.reveal-visible {
+    animation: none;
+  }
 }
 
 .card-icon {
@@ -273,7 +341,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .model-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -283,6 +351,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 16px;
   padding: 32px;
   border-top: 3px solid var(--navy);
+}
+
+@keyframes diamond-float {
+  0%   { transform: rotate(45deg) translate(0, 0); }
+  25%  { transform: rotate(45deg) translate(18px, -22px); }
+  50%  { transform: rotate(45deg) translate(-14px, -34px); }
+  75%  { transform: rotate(45deg) translate(-24px, -10px); }
+  100% { transform: rotate(45deg) translate(0, 0); }
 }
 
 .model-tag {

@@ -14,3 +14,23 @@ mainNav.querySelectorAll("a").forEach((link) => {
     navToggle.setAttribute("aria-expanded", "false");
   });
 });
+
+const revealTargets = document.querySelectorAll("#what-we-do .card");
+if (revealTargets.length && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${index * 80}ms`;
+          entry.target.classList.add("reveal-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  revealTargets.forEach((el) => {
+    el.classList.add("reveal");
+    revealObserver.observe(el);
+  });
+}
