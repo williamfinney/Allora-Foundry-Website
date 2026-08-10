@@ -244,7 +244,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -273,7 +273,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .model-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -399,6 +399,33 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .contact-form .btn { align-self: flex-start; border: none; cursor: pointer; }
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.form-row input[type="checkbox"] {
+  width: auto;
+  padding: 0;
+  border-radius: 4px;
+  accent-color: var(--navy);
+}
+
+.form-row input[type="file"] {
+  padding: 10px 14px;
+  font-size: 14px;
+}
 
 /* Footer */
 
