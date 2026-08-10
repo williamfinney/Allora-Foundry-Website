@@ -161,43 +161,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   max-width: 760px;
 }
 
-.hero-skyline {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 220px;
-  pointer-events: none;
-  background-color: var(--navy);
-  -webkit-mask-image: url('assets/nyc-skyline.svg');
-  mask-image: url('assets/nyc-skyline.svg');
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
-  -webkit-mask-position: bottom left;
-  mask-position: bottom left;
-  -webkit-mask-size: auto 100%;
-  mask-size: auto 100%;
-  transform: translateY(30px);
-  opacity: 0;
-  animation: skyline-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes skyline-rise {
-  to {
-    opacity: 0.5;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-skyline {
-    animation: none;
-    opacity: 0.5;
-    transform: translateY(0);
-  }
-}
-
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.08em;
