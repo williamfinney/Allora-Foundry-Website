@@ -43,53 +43,72 @@
     <div class="container contact-inner">
       <p class="section-label">Build With Us</p>
       <h2>Let's build something</h2>
-      <p class="section-intro">Tell us what you're working on. Only your name and email are required — everything else just helps us understand what you need.</p>
+      <p class="section-intro">Tell us what you're building, or schedule a call.</p>
 
-      <form class="contact-form" id="build-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="access_key" value="a5d2c06e-7a0d-430b-b361-87abdb3b56ae">
-        <input type="hidden" name="subject" value="New Build With Us submission">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="mode-toggle">
+        <button type="button" class="mode-toggle-btn active" data-target="form-panel">Fill out the form</button>
+        <button type="button" class="mode-toggle-btn" data-target="calendar-panel">Schedule a Call</button>
+      </div>
 
-        <div class="form-row">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="Name" required>
-        </div>
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="Email" required>
-        </div>
-        <div class="form-row">
-          <label for="company">Company / project name</label>
-          <input type="text" id="company" name="Company">
-        </div>
-        <div class="form-row">
-          <label for="website">Website (if you have one)</label>
-          <input type="url" id="website" name="Website" placeholder="https://">
-        </div>
-        <div class="form-row">
-          <label for="linkedin">LinkedIn</label>
-          <input type="url" id="linkedin" name="LinkedIn" placeholder="https://linkedin.com/in/...">
-        </div>
-        <div class="form-row">
-          <label for="message">What are you building?</label>
-          <textarea id="message" name="Message" rows="5"></textarea>
-        </div>
-        <div class="form-row">
-          <label>What do you need help with?</label>
-          <div class="checkbox-group">
-            <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Apple App Development"> Apple App Development</label>
-            <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Web & Product Development"> Web &amp; Product Development</label>
-            <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Backend & Systems Engineering"> Backend &amp; Systems Engineering</label>
-            <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Sales & Marketing Strategy"> Sales &amp; Marketing Strategy</label>
-            <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Not sure yet"> Not sure yet</label>
+      <div id="form-panel" class="toggle-panel active">
+        <form class="contact-form" id="build-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="access_key" value="a5d2c06e-7a0d-430b-b361-87abdb3b56ae">
+          <input type="hidden" name="subject" value="New Build With Us submission">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form-row">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="Name" required>
           </div>
+          <div class="form-row">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+          <div class="form-row">
+            <label for="company">Company / project name</label>
+            <input type="text" id="company" name="Company">
+          </div>
+          <div class="form-row">
+            <label for="website">Website (if you have one)</label>
+            <input type="url" id="website" name="Website" placeholder="https://">
+          </div>
+          <div class="form-row">
+            <label for="linkedin">LinkedIn</label>
+            <input type="url" id="linkedin" name="LinkedIn" placeholder="https://linkedin.com/in/...">
+          </div>
+          <div class="form-row">
+            <label for="message">What are you building?</label>
+            <textarea id="message" name="Message" rows="5"></textarea>
+          </div>
+          <div class="form-row">
+            <label>What do you need help with?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Apple App Development"> Apple App Development</label>
+              <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Web & Product Development"> Web &amp; Product Development</label>
+              <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Backend & Systems Engineering"> Backend &amp; Systems Engineering</label>
+              <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Sales & Marketing Strategy"> Sales &amp; Marketing Strategy</label>
+              <label class="checkbox-option"><input type="checkbox" name="Help needed" value="Not sure yet"> Not sure yet</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="attachment">Attach a file (pitch deck, one-pager, etc.)</label>
+            <input type="file" id="attachment" name="attachment">
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+
+      <div id="calendar-panel" class="toggle-panel">
+        <div class="calendar-embed">
+          <iframe
+            src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3fWqTdItwV_EjRoT_-j1JhcyKQcNwW4LcWeOkaelR6mCwllKSeZT33U2Iv1v7euCWTfDv_8O6m"
+            style="border: 0"
+            width="100%"
+            height="500"
+            frameborder="0">
+          </iframe>
         </div>
-        <div class="form-row">
-          <label for="attachment">Attach a file (pitch deck, one-pager, etc.)</label>
-          <input type="file" id="attachment" name="attachment">
-        </div>
-        <button type="submit" class="btn btn-primary">Send</button>
-      </form>
+      </div>
     </div>
   </section>
 

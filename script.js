@@ -34,3 +34,14 @@ if (revealTargets.length && "IntersectionObserver" in window) {
     revealObserver.observe(el);
   });
 }
+
+const modeToggleBtns = document.querySelectorAll(".mode-toggle-btn");
+modeToggleBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modeToggleBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll(".toggle-panel").forEach((panel) => {
+      panel.classList.toggle("active", panel.id === btn.dataset.target);
+    });
+  });
+});
