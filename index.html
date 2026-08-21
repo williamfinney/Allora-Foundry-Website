@@ -6,6 +6,9 @@
 <title>Allora Foundry — A Venture Studio for Builders</title>
 <meta name="description" content="Allora Foundry designs, builds, and helps market Apple apps, websites, and products for founders and startups — hands-on, from idea to launch and beyond.">
 <link rel="icon" href="assets/allora_foundry_logo_v10.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,10 +28,8 @@
       <img src="assets/allora_foundry_logo_v10.svg" alt="Allora Foundry" class="logo-img">
     </a>
     <nav class="main-nav" id="main-nav">
-      <a href="#what-we-do">What We Do</a>
-      <a href="#how-we-work">How We Work</a>
-      <a href="#founders">Founders</a>
-      <a href="portfolio.html">Portfolio</a>
+      <a href="#top">About</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="build-with-us.html" class="nav-cta">Build With Us</a>
     </nav>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -41,127 +42,71 @@
 
   <section class="hero">
     <div class="container hero-inner">
-      <p class="eyebrow">A venture studio for builders</p>
-      <h1>We help entrepreneurs bring their vision to life</h1>
-      <p class="hero-sub">Allora Foundry partners with founders and businesses of any size to turn ideas into real, working products — from concept to launch and beyond.</p>
+      <h1>Allora Foundry helps entrepreneurs bring their vision to life</h1>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-sub">For early-stage founders, we help with <span class="hero-highlight">product development</span> along with <span class="hero-highlight">sales, marketing</span>, and validating there's a real market.</p>
       <div class="hero-actions">
         <a href="build-with-us.html" class="btn btn-primary">Build With Us</a>
-        <a href="#how-we-work" class="btn btn-secondary">How We Work</a>
       </div>
     </div>
   </section>
 
-  <section id="what-we-do" class="section">
+  <section id="portfolio" class="section">
     <div class="container">
-      <p class="section-label">What We Do</p>
-      <h2>Backing founders from idea to customer</h2>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="12" y="4" width="24" height="40" rx="5" stroke="var(--navy)" stroke-width="2.5"/>
-              <circle cx="24" cy="37" r="1.8" fill="var(--navy)"/>
-            </svg>
+      <p class="section-label">Portfolio</p>
+      <h2>Products we've partnered on</h2>
+      <div class="portfolio-grid" style="margin-top: 40px;">
+
+        <div class="portfolio-card">
+          <div class="portfolio-card-logo">
+            <div class="clpper-badge">
+              <span>CLP</span>
+              <img src="assets/clpper_scissors.png" alt="" class="clpper-scissors">
+              <span>ER</span>
+            </div>
           </div>
-          <h3>Apple App Development</h3>
-          <p>Native iOS apps built end to end — product design, engineering, and App Store launch — by founders who build Apple apps themselves.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="8" width="40" height="30" rx="4" stroke="var(--navy)" stroke-width="2.5"/>
-              <line x1="4" y1="16" x2="44" y2="16" stroke="var(--navy)" stroke-width="2.5"/>
-              <circle cx="9" cy="12" r="1.4" fill="var(--navy)"/>
-              <circle cx="14" cy="12" r="1.4" fill="var(--navy)"/>
-            </svg>
+          <div class="portfolio-card-body">
+            <span class="portfolio-tag"><span class="dot"></span>Booking SaaS</span>
+            <h3>Clpper</h3>
+            <p>A booking and management platform for barbershops, salons, and nail spas — letting owners launch a fully branded app in minutes, complete with scheduling, in-app retail, and loyalty rewards.</p>
+            <a href="https://clpper.com/" target="_blank" rel="noopener">Visit site</a>
           </div>
-          <h3>Web &amp; Product Development</h3>
-          <p>Websites, web apps, and MVPs for startups and small businesses that need to launch fast and look sharp doing it.</p>
         </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="6" width="15" height="15" rx="3" stroke="var(--navy)" stroke-width="2.5"/>
-              <rect x="27" y="6" width="15" height="15" rx="3" stroke="var(--navy)" stroke-width="2.5"/>
-              <rect x="6" y="27" width="15" height="15" rx="3" stroke="var(--navy)" stroke-width="2.5"/>
-              <rect x="27" y="27" width="15" height="15" rx="3" stroke="var(--navy)" stroke-width="2.5"/>
-            </svg>
+
+        <div class="portfolio-card">
+          <div class="portfolio-card-logo">
+            <span class="logo-swingai">Swing<span class="logo-swingai-dot">•</span>AI</span>
           </div>
-          <h3>Backend &amp; Systems Engineering</h3>
-          <p>For products that need serious infrastructure, we have trusted senior engineers to manage the build on your behalf.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="5,34 17,22 26,29 43,10" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="32,10 43,10 43,21" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <div class="portfolio-card-body">
+            <span class="portfolio-tag"><span class="dot"></span>Golf App</span>
+            <h3>Swing AI</h3>
+            <p>A golf app that records your swing and uses AI to give instant feedback and improvement drills, plus mini-games to play on the course or at practice.</p>
+            <a href="https://swing-ai-website-seven.vercel.app/index.html" target="_blank" rel="noopener">Visit site</a>
           </div>
-          <h3>Sales &amp; Marketing Strategy</h3>
-          <p>Go-to-market strategy, sales positioning, and hands-on marketing support — so your product doesn't just get built, it gets in front of real customers.</p>
         </div>
+
       </div>
     </div>
   </section>
-
-  <section id="how-we-work" class="section section-alt">
-    <div class="container">
-      <p class="section-label">How We Work</p>
-      <h2>We're a build partner</h2>
-      <p class="section-intro">We invest our own time and expertise, tailored to how we can best help you build.</p>
-      <div class="model-grid">
-        <div class="model-card">
-          <span class="model-tag">For early-stage founders</span>
-          <h3>Build for Equity</h3>
-          <p>For most of the founders we work with, we help build the product in its earliest stages and pitch in wherever it's needed — sales, marketing, and validating there's a real market — in exchange for a small, negotiated equity stake, sometimes structured as a hybrid with a cash fee.</p>
-        </div>
-        <div class="model-card">
-          <span class="model-tag">For anyone who needs an app</span>
-          <h3>App Build + Managed Care</h3>
-          <p>We build your app — scoped to your project — then keep it running with ongoing updates, hosting, monitoring, and day-to-day organization so you never have to think about it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="who" class="section">
-    <div class="container who-inner">
-      <div class="who-text">
-        <p class="section-label">Who It's For</p>
-        <h2>Partners, not just business plans</h2>
-        <ul class="who-list">
-          <li>Founders and entrepreneurs with big ideas — technical or not</li>
-          <li>Anyone who needs a real app built and kept running</li>
-          <li>Startups that need an MVP built fast, and built right</li>
-          <li>Founders who need help with sales, marketing, and validating there's a real market for their product</li>
-        </ul>
-      </div>
-      <div class="who-note">
-        <img src="assets/who-placeholder.jpg" alt="Placeholder — swap for a real photo of the founders working">
-      </div>
-    </div>
-  </section>
-
-  <section id="founders" class="section section-alt">
-    <div class="container">
-      <p class="section-label">Founders</p>
-      <h2>Run by founders</h2>
-      <p class="section-intro">Allora Foundry is led by founders who've built and launched their own companies, and who build Apple apps themselves. We work alongside you.</p>
-    </div>
-  </section>
-
 
 </main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <img src="assets/allora_foundry_logo_v10.svg" alt="Allora Foundry" class="footer-logo">
-    <div class="footer-links">
+    <div class="footer-brand">
+      <img src="assets/allora_foundry_logo_v10.svg" alt="Allora Foundry" class="footer-logo">
+      <a href="https://www.linkedin.com/company/allorafoundry/" target="_blank" rel="noopener" aria-label="Allora Foundry on LinkedIn" class="footer-linkedin">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <div class="footer-right">
+      <div class="footer-links">
       <a href="terms.html">Terms</a>
       <a href="privacy.html">Privacy</a>
       <a href="mailto:info@allorafoundry.com">info@allorafoundry.com</a>
-    </div>
+      </div>
     <p>&copy; <span id="year"></span> Allora Foundry. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
