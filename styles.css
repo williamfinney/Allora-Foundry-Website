@@ -152,8 +152,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero {
   position: relative;
   box-sizing: border-box;
-  min-height: calc(90vh - 101px);
-  padding: 160px 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 101px);
+  padding: 100px 0;
   overflow: hidden;
 }
 

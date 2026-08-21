@@ -46,7 +46,11 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   if (!target) return;
   link.addEventListener("click", (e) => {
     e.preventDefault();
-    scrollToTarget(target);
+    if (hash === "#top") {
+      smoothScrollTo(0, 900);
+    } else {
+      scrollToTarget(target);
+    }
     history.pushState(null, "", hash);
   });
 });
