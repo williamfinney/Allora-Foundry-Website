@@ -1,7 +1,7 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-function easeInOutCubic(t) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function linear(t) {
+  return t;
 }
 
 function smoothScrollTo(targetY, duration) {
@@ -12,7 +12,7 @@ function smoothScrollTo(targetY, duration) {
   function step(now) {
     const elapsed = now - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+    window.scrollTo(0, startY + distance * linear(progress));
     if (progress < 1) {
       requestAnimationFrame(step);
     }
@@ -30,7 +30,7 @@ function scrollToTarget(target) {
   const centeringOffset = Math.max(0, (availableHeight - rect.height) / 2);
   const extraScroll = 75;
   const targetY = absoluteTop - headerHeight - centeringOffset + extraScroll;
-  smoothScrollTo(Math.max(0, targetY), 1100);
+  smoothScrollTo(Math.max(0, targetY), 900);
 }
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
