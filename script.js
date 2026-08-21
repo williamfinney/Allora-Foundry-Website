@@ -9,12 +9,18 @@ function smoothScrollTo(targetY, duration) {
   const distance = targetY - startY;
   const startTime = performance.now();
 
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+
   function step(now) {
     const elapsed = now - startTime;
     const progress = Math.min(elapsed / duration, 1);
     window.scrollTo(0, startY + distance * linear(progress));
     if (progress < 1) {
       requestAnimationFrame(step);
+    } else {
+      root.style.scrollBehavior = previousScrollBehavior;
     }
   }
   requestAnimationFrame(step);

@@ -152,8 +152,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero {
   position: relative;
   box-sizing: border-box;
-  min-height: calc(100vh - 101px);
-  padding: 160px 0 40px;
+  min-height: calc(90vh - 101px);
+  padding: 160px 0 100px;
   overflow: hidden;
 }
 
@@ -177,7 +177,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero h1 {
   font-size: clamp(36px, 5.5vw, 60px);
   margin-bottom: 24px;
-  color: var(--text-primary);
+  color: var(--navy);
 }
 
 .hero-divider {
