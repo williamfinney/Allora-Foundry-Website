@@ -90,6 +90,50 @@ if (revealTargets.length && "IntersectionObserver" in window) {
   });
 }
 
+const buildForm = document.getElementById("build-form");
+if (buildForm) {
+  const statusEl = document.getElementById("build-form-status");
+  const submitBtn = buildForm.querySelector("button[type=submit]");
+
+  buildForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(buildForm);
+    const data = Object.fromEntries(formData.entries());
+    const helpNeeded = formData.getAll("Help needed");
+    if (helpNeeded.length) data["Help needed"] = helpNeeded.join(", ");
+    data.botcheck = buildForm.botcheck.checked;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    statusEl.textContent = "";
+    statusEl.className = "form-status";
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+
+      if (!res.ok || !result.success) {
+        throw new Error(result.message || "Something went wrong. Please try again.");
+      }
+
+      buildForm.reset();
+      buildForm.hidden = true;
+      statusEl.textContent = "Thanks — we'll be in touch soon.";
+      statusEl.className = "form-status form-status-success";
+    } catch (err) {
+      statusEl.textContent = err.message || "Something went wrong. Please try again.";
+      statusEl.className = "form-status form-status-error";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send";
+    }
+  });
+}
+
 const modeToggleBtns = document.querySelectorAll(".mode-toggle-btn");
 modeToggleBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
