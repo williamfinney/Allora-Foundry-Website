@@ -227,64 +227,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .btn-secondary:hover { border-color: var(--slate); }
 
-/* Bracket button */
-
-.btn-bracket {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: var(--navy);
-  transition: gap 0.2s ease;
-}
-
-.bracket-line {
-  width: 150px;
-  max-width: 40vw;
-  height: 1px;
-  background: var(--navy);
-  transition: width 0.2s ease;
-}
-
-.bracket-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.bracket-bar {
-  width: 1px;
-  height: 18px;
-  background: var(--navy);
-}
-
-.bracket-label {
-  font-size: 15px;
-  font-weight: 500;
-  white-space: nowrap;
-  color: var(--navy);
-}
-
-.btn-bracket:hover { gap: 11px; }
-
-.btn-bracket:hover .bracket-line { width: 170px; }
-
-/* Bracket button — compact variant, for the header */
-
-.btn-bracket-compact {
-  gap: 4px;
-}
-
-.btn-bracket-compact .bracket-line { width: 90px; }
-
-.btn-bracket-compact:hover .bracket-line { width: 104px; }
-
-.btn-bracket-compact .bracket-bar { height: 14px; }
-
-.btn-bracket-compact .bracket-row { gap: 10px; }
-
-.btn-bracket-compact .bracket-label { font-size: 13px; }
-
 /* Sections */
 
 .section { padding: 96px 0; }
