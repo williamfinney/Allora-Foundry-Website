@@ -263,7 +263,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 110px 24px;
+  padding: 80px 24px 40px;
+}
+
+.portfolio-grid-section {
+  padding-top: 24px;
 }
 
 .portfolio-intro {
@@ -273,11 +277,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   max-width: 640px;
 }
 
-.portfolio-hero .section-label { margin-bottom: 0; }
+.portfolio-hero .section-label {
+  margin-bottom: 0;
+  font-size: 14px;
+}
 
 .portfolio-hero h2 {
   color: var(--navy);
-  font-size: clamp(32px, 4.5vw, 46px);
+  font-size: clamp(40px, 5.5vw, 58px);
   font-weight: 400;
 }
 
