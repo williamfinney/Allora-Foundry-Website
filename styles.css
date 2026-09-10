@@ -264,7 +264,6 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   justify-content: center;
   padding: 110px 24px;
-  background-color: var(--navy);
 }
 
 .portfolio-intro {
@@ -274,10 +273,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   max-width: 640px;
 }
 
-.portfolio-hero .section-label { margin-bottom: 0; color: var(--slate-light); }
+.portfolio-hero .section-label { margin-bottom: 0; }
 
 .portfolio-hero h2 {
-  color: #fff;
+  color: var(--navy);
   font-size: clamp(32px, 4.5vw, 46px);
   font-weight: 400;
 }
@@ -287,7 +286,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   width: 1px;
   height: 28px;
   margin: 16px auto;
-  background: var(--slate-light);
+  background: var(--navy);
 }
 
 
