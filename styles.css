@@ -8,7 +8,7 @@
   --text-muted: #55564E;
   --border: #DEDCD0;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-serif: "PT Serif", Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "Roboto Mono", "JetBrains Mono", Menlo, Consolas, monospace;
   --max-width: 1120px;
 }
