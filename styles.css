@@ -274,8 +274,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 640px;
+  max-width: 900px;
 }
+
+.portfolio-hero h2 { white-space: nowrap; }
 
 .portfolio-hero .section-label {
   margin-bottom: 0;
@@ -668,6 +670,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Responsive */
 
 @media (max-width: 860px) {
+  .portfolio-hero h2 { white-space: normal; }
+
   .main-nav {
     position: absolute;
     top: 76px;
