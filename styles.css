@@ -732,7 +732,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   .portfolio-card-link { color: var(--navy); }
 
   .portfolio-card-logo > .clpper-badge,
-  .portfolio-card-logo > .logo-swingai {
+  .portfolio-card-logo > .logo-swingai,
+  .portfolio-card-logo > .portfolio-logo-img {
     opacity: 1;
     transform: none;
   }
@@ -807,14 +808,17 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .portfolio-card-logo > .clpper-badge,
-.portfolio-card-logo > .logo-swingai {
+.portfolio-card-logo > .logo-swingai,
+.portfolio-card-logo > .portfolio-logo-img {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .portfolio-card:hover .portfolio-card-logo > .clpper-badge,
 .portfolio-card:hover .portfolio-card-logo > .logo-swingai,
+.portfolio-card:hover .portfolio-card-logo > .portfolio-logo-img,
 .portfolio-card:focus-visible .portfolio-card-logo > .clpper-badge,
-.portfolio-card:focus-visible .portfolio-card-logo > .logo-swingai {
+.portfolio-card:focus-visible .portfolio-card-logo > .logo-swingai,
+.portfolio-card:focus-visible .portfolio-card-logo > .portfolio-logo-img {
   opacity: 0;
   transform: scale(0.96);
 }
