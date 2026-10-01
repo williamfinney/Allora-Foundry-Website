@@ -90,6 +90,9 @@ if (revealTargets.length && "IntersectionObserver" in window) {
   });
 }
 
+// Web3Forms keys are public by design: this one can only deliver to info@allorafoundry.com.
+const WEB3FORMS_ACCESS_KEY = "a8199d60-b6b7-4acc-ab01-0729384bf585";
+
 const buildForm = document.getElementById("build-form");
 if (buildForm) {
   const statusEl = document.getElementById("build-form-status");
@@ -102,7 +105,9 @@ if (buildForm) {
     const data = Object.fromEntries(formData.entries());
     const helpNeeded = formData.getAll("Help needed");
     if (helpNeeded.length) data["Help needed"] = helpNeeded.join(", ");
-    data.botcheck = buildForm.botcheck.checked;
+    delete data.botcheck;
+    data.access_key = WEB3FORMS_ACCESS_KEY;
+    data.subject = "New Build With Us submission";
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending…";
@@ -110,9 +115,18 @@ if (buildForm) {
     statusEl.className = "form-status";
 
     try {
-      const res = await fetch("/api/contact", {
+      // Honeypot tripped: show success without sending anything, so bots learn nothing.
+      if (buildForm.botcheck.checked) {
+        buildForm.reset();
+        buildForm.hidden = true;
+        statusEl.textContent = "Thanks — we'll be in touch soon.";
+        statusEl.className = "form-status form-status-success";
+        return;
+      }
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(data),
       });
       const result = await res.json();
