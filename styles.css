@@ -115,7 +115,8 @@ body::before {
   content: "";
   position: fixed;
   z-index: -2;
-  inset: 0;
+  /* Larger than the viewport so the slow drift never uncovers an edge. */
+  inset: -10%;
   pointer-events: none;
   background:
     radial-gradient(60vmax 60vmax at 88% 42%, rgb(169 187 174 / 0.24), rgb(169 187 174 / 0) 70%),
