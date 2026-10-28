@@ -1,0 +1,86 @@
+---
+/**
+ * Four 1px lines that stop short of the corners. On hover and keyboard focus the lines close
+ * into a full rectangle and shift to Sage; pressing scales to 98%.
+ */
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a class="bracket" href={href}>
+  <slot />
+</a>
+
+<style>
+  .bracket {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 64px;
+    padding: var(--space-4) var(--space-8);
+    /* 24px = WCAG "large text", so the Sage hover color meets 3:1 on Paper. */
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--forest);
+    transition:
+      color var(--dur-hover) var(--ease),
+      transform var(--dur-hover) var(--ease);
+  }
+
+  .bracket::before {
+    --g: 12px;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid currentColor;
+    pointer-events: none;
+    clip-path: polygon(
+      var(--g) 0,
+      calc(100% - var(--g)) 0,
+      calc(100% - var(--g)) var(--g),
+      100% var(--g),
+      100% calc(100% - var(--g)),
+      calc(100% - var(--g)) calc(100% - var(--g)),
+      calc(100% - var(--g)) 100%,
+      var(--g) 100%,
+      var(--g) calc(100% - var(--g)),
+      0 calc(100% - var(--g)),
+      0 var(--g),
+      var(--g) var(--g)
+    );
+    transition: clip-path var(--dur-hover) var(--ease);
+  }
+
+  .bracket:hover,
+  .bracket:focus-visible {
+    color: var(--sage);
+  }
+
+  /* Same 12 points, collapsed onto the rectangle's corners, so clip-path interpolates. */
+  .bracket:hover::before,
+  .bracket:focus-visible::before {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 0,
+      100% 0,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      0 100%,
+      0 100%,
+      0 100%,
+      0 0,
+      0 0
+    );
+  }
+
+  .bracket:active {
+    transform: scale(0.98);
+  }
+</style>

@@ -1,0 +1,305 @@
+---
+import Logo from "./Logo.astro";
+import { nav } from "../content/site";
+
+interface Props {
+  /** On the homepage menu links are same-page anchors; elsewhere they point back to `/`. */
+  isHome: boolean;
+}
+
+const { isHome } = Astro.props;
+const base = isHome ? "" : "/";
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="header-logo" href={isHome ? "#top" : "/"} aria-label="Allora Foundry, home">
+      <Logo />
+    </a>
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-button
+    >
+      <span class="visually-hidden" data-menu-label>
+        Open menu
+      </span>
+      <span class="menu-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav id="site-menu" class="menu" aria-label="Menu" data-menu inert>
+      <ul class="menu-list">
+        {nav.map((item) => (
+          <li class="menu-item">
+            <a class="menu-link" href={`${base}${item.hash}`}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    --mark-dark: var(--forest);
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 40;
+    color: var(--forest);
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color var(--dur-hover) var(--ease),
+      border-color var(--dur-hover) var(--ease),
+      color var(--dur-hover) var(--ease);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-h);
+    max-width: calc(var(--max-width) + 2 * var(--page-pad));
+    margin-inline: auto;
+    padding-inline: var(--page-pad);
+  }
+
+  /* Past the hero the header gets a solid ground so content never runs under the logo. */
+  :global(html.is-scrolled) .site-header {
+    background-color: var(--paper);
+  }
+
+  :global(html.is-scrolled) .site-header {
+    border-bottom-color: var(--rule);
+  }
+
+  :global(html.header-on-forest) .site-header {
+    color: var(--paper);
+    background-color: var(--forest);
+  }
+
+  :global(html.header-on-forest) .site-header {
+    border-bottom-color: var(--rule-dark);
+  }
+
+  :global(html.menu-open) .site-header {
+    color: var(--paper);
+    background-color: transparent;
+  }
+
+  :global(html.menu-open) .site-header {
+    border-bottom-color: transparent;
+  }
+
+  :global(html.header-on-forest) .header-logo :global(.logo),
+  :global(html.menu-open) .header-logo :global(.logo) {
+    --mark-dark: var(--paper);
+  }
+
+  .header-logo {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    padding-block: var(--space-2);
+  }
+
+  .menu-button {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-right: calc(var(--space-3) * -1);
+  }
+
+  .menu-icon {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 13px;
+  }
+
+  .menu-icon span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transition:
+      transform var(--dur-hover) var(--ease),
+      opacity var(--dur-hover) var(--ease);
+  }
+
+  .menu-icon span:nth-child(1) {
+    top: 0;
+  }
+
+  .menu-icon span:nth-child(2) {
+    top: 6px;
+  }
+
+  .menu-icon span:nth-child(3) {
+    top: 12px;
+  }
+
+  [aria-expanded="true"] .menu-icon span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  [aria-expanded="true"] .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  [aria-expanded="true"] .menu-icon span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding: var(--header-h) var(--page-pad);
+    background-color: var(--forest);
+    color: var(--paper);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity var(--dur-hover) var(--ease),
+      visibility 0s linear var(--dur-hover);
+  }
+
+  :global(html.menu-open) .menu {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity var(--dur-hover) var(--ease),
+      visibility 0s;
+  }
+
+  .menu-list {
+    display: grid;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  .menu-item {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  :global(html.menu-open) .menu-item {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity var(--dur-reveal) var(--ease) var(--delay, 0ms),
+      transform var(--dur-reveal) var(--ease) var(--delay, 0ms);
+  }
+
+  /* 60ms stagger, set in CSS because the Content Security Policy forbids inline styles. */
+  .menu-item:nth-child(2) {
+    --delay: 60ms;
+  }
+
+  .menu-item:nth-child(3) {
+    --delay: 120ms;
+  }
+
+  .menu-item:nth-child(4) {
+    --delay: 180ms;
+  }
+
+  .menu-item:nth-child(5) {
+    --delay: 240ms;
+  }
+
+  .menu-link {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-size: var(--text-menu);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .menu-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.08em;
+    height: 1px;
+    background-color: currentColor;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path var(--dur-hover) var(--ease);
+  }
+
+  .menu-link:hover::after,
+  .menu-link:focus-visible::after {
+    clip-path: inset(0);
+  }
+</style>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>("[data-menu-button]");
+  const menu = document.querySelector<HTMLElement>("[data-menu]");
+  const label = document.querySelector<HTMLElement>("[data-menu-label]");
+
+  if (button && menu && label) {
+    const root = document.documentElement;
+    const links = Array.from(menu.querySelectorAll<HTMLAnchorElement>("a"));
+    const lastLink = links.at(-1);
+
+    const setOpen = (open: boolean, restoreFocus = true): void => {
+      root.classList.toggle("menu-open", open);
+      button.setAttribute("aria-expanded", String(open));
+      label.textContent = open ? "Close menu" : "Open menu";
+      menu.inert = !open;
+      root.style.overflow = open ? "hidden" : "";
+      if (open) links[0]?.focus();
+      else if (restoreFocus) button.focus();
+    };
+
+    button.addEventListener("click", () => {
+      setOpen(button.getAttribute("aria-expanded") !== "true");
+    });
+
+    // Following a link closes the menu and lets the browser jump to the anchor.
+    for (const link of links) {
+      link.addEventListener("click", () => setOpen(false, false));
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!root.classList.contains("menu-open")) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !lastLink) return;
+      // Trap focus inside the menu button and links while the menu is open.
+      if (event.shiftKey && document.activeElement === button) {
+        event.preventDefault();
+        lastLink.focus();
+      } else if (!event.shiftKey && document.activeElement === lastLink) {
+        event.preventDefault();
+        button.focus();
+      } else if (document.activeElement !== button && !menu.contains(document.activeElement)) {
+        event.preventDefault();
+        button.focus();
+      }
+    });
+  }
+</script>

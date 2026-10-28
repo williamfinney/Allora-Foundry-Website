@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pages } from "../content/site";
+---
+
+<BaseLayout title={pages.notFound.title} description={pages.notFound.description} noindex>
+  <div class="section not-found">
+    <div class="container not-found-inner">
+      <p class="eyebrow">404</p>
+      <h1 class="display">This page doesn't exist.</h1>
+      <a class="link" href="/">
+        Go to the homepage
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 100svh;
+    padding-top: var(--header-h);
+  }
+
+  .not-found-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    text-align: center;
+  }
+</style>

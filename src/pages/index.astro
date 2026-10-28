@@ -1,0 +1,427 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BracketButton from "../components/BracketButton.astro";
+import StudioGrid from "../components/StudioGrid.astro";
+import {
+  approach,
+  capabilities,
+  contact,
+  founders,
+  hero,
+  pages,
+  site,
+  studio,
+  team,
+} from "../content/site";
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  legalName: site.legalName,
+  url: `${site.url}/`,
+  logo: `${site.url}/images/logo-512.png`,
+  email: site.email,
+  sameAs: [site.linkedin],
+};
+---
+
+<BaseLayout
+  title={pages.home.title}
+  description={pages.home.description}
+  isHome
+  solidHeader={false}
+  jsonLd={organization}
+>
+  <canvas slot="background" class="dotfield" aria-hidden="true" data-dotfield></canvas>
+
+  <section id="top" class="hero" data-hero data-dotfield-zone aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <p class="eyebrow hero-eyebrow">{hero.eyebrow}</p>
+      <h1 id="hero-title" class="display hero-title">
+        {hero.headline.text}
+      </h1>
+      <p class="hero-sub">{hero.subline.text}</p>
+      <div class="hero-cta">
+        <BracketButton href={hero.cta.hash}>{hero.cta.label}</BracketButton>
+      </div>
+    </div>
+    <div class="container hero-corners small">
+      <a class="link" href={`mailto:${site.email}`}>
+        {site.email}
+      </a>
+      {site.location && <span>{site.location}</span>}
+    </div>
+  </section>
+
+  <section id="approach" class="section" aria-labelledby="approach-title">
+    <div class="container grid">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">{approach.eyebrow}</p>
+        <h2 id="approach-title" class="h2">
+          {approach.headline.text}
+        </h2>
+      </div>
+      <ol class="steps">
+        {approach.steps.map((step) => (
+          <li class="step" data-reveal>
+            <span class="step-number small muted" aria-hidden="true">
+              {step.number}
+            </span>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="capabilities" class="section section-tight" aria-labelledby="capabilities-title">
+    <div class="container grid">
+      <div class="section-head" data-reveal>
+        <h2 id="capabilities-title" class="eyebrow">
+          {capabilities.eyebrow}
+        </h2>
+      </div>
+      <ul class="capabilities">
+        {capabilities.items.map((item) => (
+          <li class="capability">{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section
+    id="studio"
+    class="section studio on-forest"
+    data-forest
+    data-dotfield-zone
+    aria-labelledby="studio-title"
+  >
+    <div class="container grid">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">{studio.eyebrow}</p>
+        <h2 id="studio-title" class="h2">
+          {studio.headline.text}
+        </h2>
+      </div>
+      <div class="studio-body">
+        <StudioGrid products={studio.products} />
+      </div>
+    </div>
+  </section>
+
+  <section id="founders" class="section" aria-labelledby="founders-title">
+    <div class="container grid">
+      <div class="section-head" data-reveal>
+        <h2 id="founders-title" class="eyebrow">
+          {founders.eyebrow}
+        </h2>
+      </div>
+      <ol class="numbered">
+        {founders.items.map((item, i) => (
+          <li class="numbered-item" data-reveal>
+            <span class="numbered-index small muted" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span class="numbered-text">{item}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="team" class="section section-tight" aria-labelledby="team-title">
+    <div class="container grid">
+      <div class="section-head" data-reveal>
+        <h2 id="team-title" class="eyebrow">
+          {team.eyebrow}
+        </h2>
+      </div>
+      <ul class="team">
+        {team.members.map((member) => (
+          <li class="member" data-reveal>
+            {member.bio ? (
+              <a class="member-name link" href={`/team/${member.slug}`}>
+                {member.name}
+              </a>
+            ) : (
+              <span class="member-name">{member.name}</span>
+            )}
+            <span class="small muted">{member.title}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact" aria-labelledby="contact-title">
+    <div class="container contact-inner" data-reveal>
+      <h2 id="contact-title" class="display contact-title">
+        {contact.headline.text}
+      </h2>
+      <BracketButton href={contact.cta.href}>{contact.cta.label}</BracketButton>
+      <a class="link contact-email" href={`mailto:${site.email}`}>
+        {site.email}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { startDotField } from "../scripts/dotfield";
+
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-dotfield]");
+  if (canvas) startDotField(canvas);
+</script>
+
+<style>
+  .dotfield {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100lvh;
+    color: var(--sage);
+    pointer-events: none;
+    opacity: 0;
+    animation: fade-in 1200ms var(--ease) 600ms forwards;
+  }
+
+  /* Content sits above the fixed dot field; Paper sections cover it, hero and studio let it show. */
+  main {
+    position: relative;
+  }
+
+  .hero {
+    position: relative;
+    display: grid;
+    min-height: 100svh;
+    padding-top: var(--header-h);
+    background-color: transparent;
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .hero-eyebrow,
+  .hero-title,
+  .hero-sub,
+  .hero-cta {
+    opacity: 0;
+    animation: rise-in 900ms var(--ease) forwards;
+  }
+
+  .hero-title {
+    max-width: 16ch;
+  }
+
+  .hero-eyebrow,
+  .hero-sub,
+  .hero-cta {
+    animation-delay: 150ms;
+  }
+
+  .hero-sub {
+    max-width: 38ch;
+    color: var(--forest-muted);
+  }
+
+  .hero-cta {
+    margin-top: var(--space-4);
+  }
+
+  .hero-corners {
+    display: flex;
+    justify-content: space-between;
+    align-self: end;
+    padding-block: var(--space-6);
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .section-tight {
+    padding-block: calc(var(--section-pad) * 0.6);
+  }
+
+  .section-head {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: var(--space-6);
+    align-content: start;
+    margin-bottom: var(--space-12);
+  }
+
+  .steps,
+  .capabilities,
+  .numbered,
+  .team,
+  .studio-body {
+    grid-column: 1 / -1;
+  }
+
+  .steps {
+    display: grid;
+    gap: var(--space-10);
+  }
+
+  .step {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--rule);
+  }
+
+  .step-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  .capabilities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+
+  .capability {
+    padding: var(--space-8) var(--space-4);
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .studio {
+    background-color: transparent;
+  }
+
+  .numbered {
+    border-top: 1px solid var(--rule);
+  }
+
+  .numbered-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: baseline;
+    gap: var(--space-4);
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .numbered-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.375rem, 2.4vw, 2rem);
+    font-weight: 300;
+    line-height: 1.25;
+  }
+
+  .team {
+    display: grid;
+    border-top: 1px solid var(--rule);
+  }
+
+  .member {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-6);
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .member-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .contact {
+    border-top: 1px solid var(--rule);
+  }
+
+  .contact-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-10);
+    text-align: center;
+  }
+
+  .contact-title {
+    max-width: 18ch;
+  }
+
+  .contact-email {
+    color: var(--forest-muted);
+  }
+
+  @media (min-width: 768px) {
+    .steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--gutter);
+    }
+
+    .capabilities {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .capability {
+      padding: var(--space-10) var(--space-6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-head {
+      grid-column: 1 / span 7;
+      margin-bottom: var(--space-16);
+    }
+
+    .numbered,
+    .team {
+      grid-column: 4 / -1;
+    }
+
+    .numbered-item {
+      grid-template-columns: 4rem 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dotfield,
+    .hero-eyebrow,
+    .hero-title,
+    .hero-sub,
+    .hero-cta {
+      opacity: 1;
+      animation: none;
+    }
+  }
+</style>

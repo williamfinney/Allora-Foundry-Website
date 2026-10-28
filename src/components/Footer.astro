@@ -1,0 +1,72 @@
+---
+import Logo from "./Logo.astro";
+import { site } from "../content/site";
+
+// Rendered at build time, never hard-coded.
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a class="footer-logo" href="/" aria-label="Allora Foundry, home">
+      <Logo />
+    </a>
+    <ul class="footer-links small">
+      <li>
+        <a class="link" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+      </li>
+      <li>
+        <a class="link" href={site.linkedin} rel="noopener" target="_blank">
+          LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="/legal">
+          Legal
+        </a>
+      </li>
+    </ul>
+    <p class="footer-copy small muted">
+      &copy; {year} {site.legalName}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background-color: var(--paper);
+    border-top: 1px solid var(--rule);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-12);
+  }
+
+  .footer-logo {
+    justify-self: start;
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: var(--gutter);
+    }
+
+    .footer-links {
+      justify-content: center;
+    }
+  }
+</style>

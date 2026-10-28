@@ -1,0 +1,101 @@
+/*
+ * Design tokens. Values come from the redesign brief: three brand colors from the logo,
+ * one serif + one sans, a 4px spacing scale and a single easing curve.
+ * Brand colors are fixed; there is deliberately no dark-mode switch.
+ */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-latin-wght.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-latin-wght.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Metric-matched fallbacks (generated with Astro's font tooling) so the swap causes no layout shift. */
+@font-face {
+  font-family: "Newsreader Fallback";
+  src: local("Times New Roman");
+  font-weight: 200 800;
+  size-adjust: 105.4769%;
+  ascent-override: 69.6835%;
+  descent-override: 25.124%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Instrument Sans Fallback";
+  src: local("Arial");
+  font-weight: 400 700;
+  size-adjust: 102.7365%;
+  ascent-override: 94.4163%;
+  descent-override: 24.3341%;
+  line-gap-override: 0%;
+}
+
+:root {
+  color-scheme: light;
+
+  --forest: #0f2a1e;
+  --sage: #6e8c74;
+  --paper: #f6f5f0;
+  --forest-muted: rgb(15 42 30 / 0.68);
+  --rule: rgb(15 42 30 / 0.14);
+  --paper-muted: rgb(246 245 240 / 0.7);
+  --rule-dark: rgb(246 245 240 / 0.16);
+
+  --font-serif: "Newsreader", "Newsreader Fallback", Georgia, serif;
+  --font-sans: "Instrument Sans", "Instrument Sans Fallback", Arial, sans-serif;
+
+  --text-display: clamp(2.75rem, 6vw, 5.25rem);
+  --text-h2: clamp(2rem, 3.6vw, 3.25rem);
+  --text-menu: clamp(2.5rem, 5vw, 4rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.875rem;
+  --text-eyebrow: 0.75rem;
+
+  /* 4px spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --max-width: 1320px;
+  --gutter: 24px;
+  --page-pad: 16px;
+  --section-pad: clamp(6rem, 14vw, 12rem);
+  --header-h: 72px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-hover: 200ms;
+  --dur-reveal: 700ms;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-pad: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 32px;
+    --header-h: 88px;
+  }
+}

@@ -1,0 +1,257 @@
+@import "./tokens.css";
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  min-height: 100svh;
+  background-color: var(--paper);
+  color: var(--forest);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--dur-reveal) var(--ease);
+}
+
+/* Set by the page script while the studio section fills the viewport. */
+html.is-forest body {
+  background-color: var(--forest);
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* Avoid a single word stranded on the last line of a paragraph. */
+p,
+li {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--sage);
+  color: var(--paper);
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: calc(var(--max-width) + 2 * var(--page-pad));
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-pad);
+  background-color: var(--paper);
+}
+
+/* Type */
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.small {
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.eyebrow {
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest-muted);
+}
+
+html.is-forest .on-forest .eyebrow {
+  color: var(--paper-muted);
+}
+
+.muted {
+  color: var(--forest-muted);
+}
+
+html.is-forest .on-forest .muted {
+  color: var(--paper-muted);
+}
+
+/*
+ * The studio section has no background of its own: the whole page eases to Forest while it holds
+ * the middle of the screen. Until then its content reads Forest on Paper, so it is never invisible.
+ */
+.on-forest {
+  --cell-rule: var(--rule);
+  --cell-muted: var(--forest-muted);
+  color: var(--forest);
+  transition: color var(--dur-reveal) var(--ease);
+}
+
+html.is-forest .on-forest {
+  --cell-rule: var(--rule-dark);
+  --cell-muted: var(--paper-muted);
+  color: var(--paper);
+}
+
+.on-forest .eyebrow {
+  transition: color var(--dur-reveal) var(--ease);
+}
+
+/* Text link: a 1px underline draws in from the left on hover and focus. */
+.link {
+  position: relative;
+  padding-bottom: 1px;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: currentColor;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--dur-hover) var(--ease);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  clip-path: inset(0);
+}
+
+/* Accessibility helpers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--forest);
+  color: var(--paper);
+  font-size: var(--text-small);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* Section reveal: only applied by script to elements that start below the fold. */
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-reveal) var(--ease),
+    transform var(--dur-reveal) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+  }
+}

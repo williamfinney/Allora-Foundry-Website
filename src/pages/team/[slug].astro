@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { team, type TeamMember } from "../../content/site";
+
+export function getStaticPaths() {
+  return team.members
+    .filter((member: TeamMember) => member.bio !== null)
+    .map((member: TeamMember) => ({ params: { slug: member.slug }, props: { member } }));
+}
+
+interface Props {
+  member: TeamMember;
+}
+
+const { member } = Astro.props;
+const bio = member.bio ?? [];
+---
+
+<BaseLayout
+  title={`${member.name} — Allora Foundry`}
+  description={`${member.name}, ${member.title} of Allora Foundry.`}
+>
+  <article class="section bio">
+    <div class="container grid">
+      <header class="bio-head">
+        <p class="eyebrow">{member.title}</p>
+        <h1 class="display">{member.name}</h1>
+      </header>
+      <div class="bio-body">
+        {bio.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <ul class="bio-links">
+          {member.linkedin && (
+            <li>
+              <a class="link" href={member.linkedin} target="_blank" rel="noopener">
+                LinkedIn<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+          )}
+          <li>
+            <a class="link" href="/#team">
+              Back to team
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .bio {
+    padding-top: calc(var(--header-h) + var(--section-pad) * 0.6);
+  }
+
+  .bio-head,
+  .bio-body {
+    grid-column: 1 / -1;
+  }
+
+  .bio-head {
+    display: grid;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  .bio-body {
+    display: grid;
+    gap: var(--space-6);
+    max-width: 62ch;
+  }
+
+  .bio-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (min-width: 1024px) {
+    .bio-body {
+      grid-column: 4 / span 7;
+    }
+  }
+</style>
