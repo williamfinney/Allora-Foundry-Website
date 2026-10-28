@@ -316,6 +316,65 @@ ul {
   transform: scale(0.98);
 }
 
+/* Bracket buttons (header "Build With Us", hero "See Our Portfolio"):
+   four thin lines that stop short of the corners, closing into a full
+   rectangle on hover. No fill, so the background and dot field show through. */
+.nav-cta,
+.hero .btn {
+  position: relative;
+  background: transparent;
+  color: var(--text);
+}
+
+.nav-cta {
+  padding: 14px 22px;
+}
+
+.hero .btn {
+  padding: 20px 34px;
+  font-size: 16px;
+}
+
+.nav-cta::before,
+.hero .btn::before {
+  --gap: 14px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid currentColor;
+  pointer-events: none;
+  clip-path: polygon(
+    var(--gap) 0,
+    calc(100% - var(--gap)) 0,
+    calc(100% - var(--gap)) var(--gap),
+    100% var(--gap),
+    100% calc(100% - var(--gap)),
+    calc(100% - var(--gap)) calc(100% - var(--gap)),
+    calc(100% - var(--gap)) 100%,
+    var(--gap) 100%,
+    var(--gap) calc(100% - var(--gap)),
+    0 calc(100% - var(--gap)),
+    0 var(--gap),
+    var(--gap) var(--gap)
+  );
+  transition: clip-path 0.35s var(--ease);
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible,
+.hero .btn:hover,
+.hero .btn:focus-visible {
+  background: transparent;
+}
+
+/* Same 12 points moved onto the corners, so the shape animates smoothly. */
+.nav-cta:hover::before,
+.nav-cta:focus-visible::before,
+.hero .btn:hover::before,
+.hero .btn:focus-visible::before {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 100%, 0 0, 0 0);
+}
+
 /* Labels ----------------------------------------------------------------- */
 
 .section-label,
