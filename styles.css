@@ -50,7 +50,7 @@
 :root {
   /* Brand */
   --forest: #0f2a1e;
-  --page: #15362a; /* page background: a touch lighter than the brand forest */
+  --page: #1a3f31; /* page background: a touch lighter than the brand forest */
   --sage: #6e8c74;
   --sage-light: #a9bbae;
   --label: #d4ded6; /* small uppercase labels: stays above 4.5:1 across the glow */
@@ -121,7 +121,8 @@ body::before {
   background:
     radial-gradient(60vmax 60vmax at 88% 42%, rgb(169 187 174 / 0.24), rgb(169 187 174 / 0) 70%),
     radial-gradient(70vmax 70vmax at 80% 60%, rgb(110 140 116 / 0.34), rgb(110 140 116 / 0) 70%),
-    radial-gradient(55vmax 55vmax at 0% 100%, rgb(110 140 116 / 0.18), rgb(110 140 116 / 0) 70%);
+    radial-gradient(55vmax 55vmax at 0% 100%, rgb(110 140 116 / 0.18), rgb(110 140 116 / 0) 70%),
+    radial-gradient(60vmax 60vmax at 5% 30%, rgb(110 140 116 / 0.14), rgb(110 140 116 / 0) 70%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
