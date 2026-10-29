@@ -1170,13 +1170,13 @@ ul {
     padding: 32px 20px;
   }
 
-  /* Logo on its own line, then email and LinkedIn side by side. */
+  /* The header already shows the logo on phones, so the footer skips it. */
   .footer-left {
     gap: 16px 20px;
   }
 
   .footer-left .footer-brand {
-    flex-basis: 100%;
+    display: none;
   }
 }
 
