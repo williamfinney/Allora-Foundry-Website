@@ -375,6 +375,14 @@ ul {
   clip-path: polygon(0 0, 100% 0, 100% 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 100%, 0 0, 0 0);
 }
 
+/* Touch screens have no hover, so show the bracket buttons as a closed rectangle. */
+@media (hover: none) {
+  .nav-cta::before,
+  .hero .btn::before {
+    clip-path: none;
+  }
+}
+
 /* Labels ----------------------------------------------------------------- */
 
 .section-label,

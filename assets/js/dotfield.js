@@ -119,7 +119,9 @@ function startDotField(canvas) {
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
-  const color = getComputedStyle(canvas).color;
+  // Read in layout(), not here: on a slow load the stylesheet can arrive after
+  // this script runs, and reading early gives black dots on a default-size canvas.
+  let color = "";
 
   let dots = [];
   let width = 0;
@@ -139,6 +141,7 @@ function startDotField(canvas) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     width = canvas.clientWidth;
     height = canvas.clientHeight;
+    color = getComputedStyle(canvas).color;
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -236,6 +239,11 @@ function startDotField(canvas) {
   };
 
   layout();
+
+  // Re-measure whenever the canvas changes size, including when late CSS lands.
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => onResize(reducedMotion)).observe(canvas);
+  }
 
   if (reducedMotion) {
     draw(0);
