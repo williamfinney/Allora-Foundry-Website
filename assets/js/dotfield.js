@@ -144,7 +144,7 @@ function startDotField(canvas) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     const count = Math.max(MIN_DOTS, Math.min(MAX_DOTS, Math.round((width * height) / 400)));
-    const size = Math.min(width * 0.92, height * 0.86, 820);
+    const size = Math.min(width * 0.96, height * 0.96, 918);
     dots = buildDots(count, size / LOGO_EXTENT, width / 2, height / 2);
   };
 
