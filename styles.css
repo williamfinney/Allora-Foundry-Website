@@ -50,7 +50,7 @@
 :root {
   /* Brand */
   --forest: #0f2a1e;
-  --page: #1a3f31; /* page background: a touch lighter than the brand forest */
+  --page: #1f4838; /* page background: a touch lighter than the brand forest */
   --sage: #6e8c74;
   --sage-light: #a9bbae;
   --label: #d4ded6; /* small uppercase labels: stays above 4.5:1 across the glow */
@@ -119,10 +119,10 @@ body::before {
   inset: -10%;
   pointer-events: none;
   background:
-    radial-gradient(60vmax 60vmax at 88% 42%, rgb(169 187 174 / 0.24), rgb(169 187 174 / 0) 70%),
-    radial-gradient(70vmax 70vmax at 80% 60%, rgb(110 140 116 / 0.34), rgb(110 140 116 / 0) 70%),
-    radial-gradient(55vmax 55vmax at 0% 100%, rgb(110 140 116 / 0.18), rgb(110 140 116 / 0) 70%),
-    radial-gradient(60vmax 60vmax at 5% 30%, rgb(110 140 116 / 0.14), rgb(110 140 116 / 0) 70%);
+    radial-gradient(60vmax 60vmax at 88% 42%, rgb(169 187 174 / 0.26), rgb(169 187 174 / 0) 70%),
+    radial-gradient(70vmax 70vmax at 80% 60%, rgb(110 140 116 / 0.36), rgb(110 140 116 / 0) 70%),
+    radial-gradient(55vmax 55vmax at 0% 100%, rgb(110 140 116 / 0.22), rgb(110 140 116 / 0) 70%),
+    radial-gradient(60vmax 60vmax at 5% 30%, rgb(110 140 116 / 0.20), rgb(110 140 116 / 0) 70%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -248,8 +248,8 @@ ul {
 }
 
 .logo-mark {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   flex: none;
 }
 
@@ -263,7 +263,7 @@ ul {
 
 .logo-word {
   font-family: var(--font-sans);
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 500;
   letter-spacing: -0.015em;
   line-height: 1;
@@ -915,15 +915,6 @@ ul {
   gap: 16px 32px;
 }
 
-.footer-brand .logo-mark {
-  width: 28px;
-  height: 28px;
-}
-
-.footer-brand .logo-word {
-  font-size: 16px;
-}
-
 .footer-inner a,
 .footer-inner p {
   font-size: 14px;
@@ -936,10 +927,6 @@ ul {
 
 .footer-inner a:hover,
 .footer-inner a:focus-visible {
-  color: var(--text);
-}
-
-.footer-inner .footer-brand {
   color: var(--text);
 }
 
@@ -1131,12 +1118,12 @@ ul {
   }
 
   .logo-mark {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .logo-word {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .nav-cta {
@@ -1175,19 +1162,14 @@ ul {
     padding: 32px 20px;
   }
 
-  /* The header already shows the logo on phones, so the footer skips it. */
   .footer-left {
     gap: 16px 20px;
-  }
-
-  .footer-left .footer-brand {
-    display: none;
   }
 }
 
 @media (max-width: 380px) {
   .logo-word {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
