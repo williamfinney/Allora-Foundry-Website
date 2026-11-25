@@ -650,6 +650,11 @@ ul {
   height: auto;
 }
 
+/* Square marks (like Olla's pot) need more height than a wordmark. */
+.portfolio-logo-img.portfolio-logo-tall {
+  max-height: 140px;
+}
+
 .clpper-badge {
   display: inline-flex;
   align-items: center;
