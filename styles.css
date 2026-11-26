@@ -366,24 +366,6 @@ ul {
   transition-delay: 0.15s;
 }
 
-/* Header "Build With Us": a solid forest button, no brackets. */
-.nav-cta {
-  background: var(--forest);
-  color: var(--paper);
-  transition-delay: 0s;
-}
-
-.nav-cta::before {
-  display: none;
-}
-
-.nav-cta:hover,
-.nav-cta:focus-visible {
-  background: var(--forest-hover);
-  color: var(--paper);
-  transition-delay: 0s;
-}
-
 .btn:hover,
 .btn:focus-visible {
   background: var(--forest-hover);
