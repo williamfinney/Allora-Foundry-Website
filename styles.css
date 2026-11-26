@@ -537,7 +537,7 @@ ul {
 
 .page-portfolio {
   justify-content: center;
-  padding-bottom: 64px;
+  padding-bottom: 112px;
 }
 
 .portfolio-hero {
@@ -569,103 +569,96 @@ ul {
   margin: 28px auto 0;
 }
 
-/* One ruled grid of tiles with shared hairlines: the grid draws the top
-   and left edges, each tile its right and bottom. */
+/* Count and scope above the grid, on a hairline. */
+.portfolio-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+/* One ruled grid with shared hairlines: the grid draws the top and left
+   edges, each company its right and bottom. */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--rule-strong);
   border-left: 1px solid var(--rule-strong);
 }
 
-.portfolio-card {
+.co {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--surface);
   border-right: 1px solid var(--rule-strong);
   border-bottom: 1px solid var(--rule-strong);
-  transition: background-color 0.25s var(--ease);
+  transition: background-color 0.3s var(--ease);
 }
 
-.portfolio-card:hover,
-.portfolio-card:focus-visible {
-  background: var(--mint);
+.co:hover,
+.co:focus-within {
+  background: #fbfdfb;
 }
 
-.portfolio-card-logo {
+.co-logo {
   position: relative;
-  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  overflow: hidden;
+  height: 240px;
+  padding: 40px;
+  background: linear-gradient(180deg, var(--surface), #f6f9f6);
+  border-bottom: 1px solid var(--rule);
 }
 
-.portfolio-card-logo > .clpper-badge,
-.portfolio-card-logo > .logo-swingai,
-.portfolio-card-logo > .portfolio-logo-img {
-  transition:
-    opacity 0.2s var(--ease),
-    transform 0.2s var(--ease);
+.co-logo > :not(.co-index) {
+  transition: transform 0.5s var(--ease);
 }
 
-.portfolio-card:hover .portfolio-card-logo > :not(.portfolio-card-hover),
-.portfolio-card:focus-visible .portfolio-card-logo > :not(.portfolio-card-hover) {
-  opacity: 0;
-  transform: scale(0.96);
+.co:hover .co-logo > :not(.co-index) {
+  transform: scale(1.04);
 }
 
-.portfolio-card-hover {
+.co-index {
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 28px;
-  text-align: center;
-  background: var(--forest);
-  opacity: 0;
-  transition: opacity 0.25s var(--ease);
-  pointer-events: none;
-}
-
-.portfolio-card:hover .portfolio-card-hover,
-.portfolio-card:focus-visible .portfolio-card-hover {
-  opacity: 1;
-}
-
-.portfolio-card-hover p {
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--paper);
-}
-
-.portfolio-card-link {
-  font-family: var(--font-sans);
+  top: 18px;
+  left: 22px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--paper);
+  color: var(--sage);
 }
 
-.portfolio-card-body {
+.co-logo-img {
+  max-width: 78%;
+  max-height: 52px;
+  width: auto;
+  height: auto;
+}
+
+/* Square marks (Olla's pot) need more height than a wordmark. */
+.co-logo-img.co-logo-mark {
+  max-height: 150px;
+}
+
+.co-body {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 18px 24px 22px;
-  border-top: 1px solid var(--rule);
+  flex: 1;
+  padding: 28px 32px 30px;
 }
 
-.portfolio-tag {
+.co-meta {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-sans);
+  flex-wrap: wrap;
+  gap: 4px 0;
+  margin-bottom: 12px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -673,28 +666,69 @@ ul {
   color: var(--label);
 }
 
-.portfolio-tag .dot {
+.co-meta span + span::before {
+  content: "";
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 4px;
+  height: 4px;
+  margin: 0 12px 3px;
   border-radius: 50%;
-  background: var(--sage);
+  background: var(--sage-light);
 }
 
-.portfolio-card-body h2 {
-  font-size: 22px;
+.co-name {
+  font-size: 30px;
+  letter-spacing: -0.01em;
 }
 
-.portfolio-logo-img {
-  max-width: 100%;
-  max-height: 56px;
-  width: auto;
-  height: auto;
+/* The name link covers the whole card; the links row sits above it. */
+.co-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
-/* Square marks (like Olla's pot) need more height than a wordmark. */
-.portfolio-logo-img.portfolio-logo-tall {
-  max-height: 140px;
+.co-primary:focus-visible {
+  outline: none;
+}
+
+.co:has(.co-primary:focus-visible) {
+  outline: 2px solid var(--sage);
+  outline-offset: -2px;
+}
+
+.co-desc {
+  max-width: 46ch;
+  margin-top: 12px;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.co-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.co-links a {
+  display: inline-flex;
+  gap: 6px;
+  padding: 4px 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  border-bottom: 1px solid var(--rule-strong);
+  transition: border-color 0.2s var(--ease);
+}
+
+.co-links a:hover,
+.co-links a:focus-visible {
+  border-color: var(--forest);
 }
 
 .clpper-badge {
@@ -720,7 +754,7 @@ ul {
 
 .logo-swingai {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 500;
   color: #1f3d2b;
 }
@@ -989,18 +1023,6 @@ ul {
 /* Desktop: every page except the legal documents fits the screen ------- */
 
 @media (min-width: 1024px) {
-  /* Four square logo tiles across, sized so the page still fits the screen. */
-  .page-portfolio .portfolio-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: min(100%, calc((100svh - 540px) * 4));
-    margin: 0 auto;
-  }
-
-  .page-portfolio .portfolio-card-logo {
-    height: auto;
-    aspect-ratio: 1;
-  }
-
   /* Heading above the form, one centred block that fills the screen. */
   .contact-layout {
     flex: 1 0 auto;
@@ -1121,32 +1143,16 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  /* Hover reveals don't work on touch: show the description permanently. */
-  .portfolio-card-logo {
-    height: auto;
-    flex-direction: column;
-    padding: 32px 24px 0;
+  .co-logo {
+    height: 200px;
   }
 
-  .portfolio-card-hover {
-    position: static;
-    opacity: 1;
-    background: none;
-    padding: 16px 0 24px;
+  .co-body {
+    padding: 24px 24px 26px;
   }
 
-  .portfolio-card-hover p {
-    color: var(--text-muted);
-  }
-
-  .portfolio-card-link {
-    color: var(--forest);
-  }
-
-  .portfolio-card:hover .portfolio-card-logo > :not(.portfolio-card-hover),
-  .portfolio-card:focus-visible .portfolio-card-logo > :not(.portfolio-card-hover) {
-    opacity: 1;
-    transform: none;
+  .co-name {
+    font-size: 26px;
   }
 }
 
@@ -1225,8 +1231,7 @@ ul {
     transform: none;
   }
 
-  .portfolio-card-hover,
-  .portfolio-card-logo > * {
+  .co-logo > * {
     transition: none;
   }
 }
