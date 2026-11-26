@@ -214,13 +214,11 @@ ul {
 
 /* Header ----------------------------------------------------------------- */
 
-/* Light header on the page with a hairline beneath; the footer is a mint band. */
+/* The header sits directly on the page; the footer is a mint band. */
 .site-header {
   position: relative;
   z-index: 10;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--rule);
-  background: rgb(250 249 246 / 0.7);
 }
 
 .site-footer {
