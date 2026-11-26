@@ -214,17 +214,14 @@ ul {
 
 /* Header ----------------------------------------------------------------- */
 
-/* The header sits directly on the page; the footer is a mint band. */
+/* Header and footer sit directly on the page, no bars or lines. */
 .site-header {
   position: relative;
   z-index: 10;
   flex-shrink: 0;
 }
 
-.site-footer {
-  background: var(--mint);
-  border-top: 1px solid var(--rule);
-}
+
 
 .header-inner {
   display: flex;
