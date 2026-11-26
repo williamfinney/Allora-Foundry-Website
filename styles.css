@@ -569,24 +569,13 @@ ul {
   margin: 28px auto 0;
 }
 
-/* Count and scope above the grid, on a hairline. */
-.portfolio-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 14px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--label);
-}
-
 /* One ruled grid with shared hairlines: the grid draws the top and left
    edges, each company its right and bottom. */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 920px;
+  margin: 0 auto;
   border-top: 1px solid var(--rule-strong);
   border-left: 1px solid var(--rule-strong);
 }
@@ -611,73 +600,33 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 240px;
-  padding: 40px;
+  height: 168px;
+  padding: 28px;
   background: linear-gradient(180deg, var(--surface), #f6f9f6);
   border-bottom: 1px solid var(--rule);
 }
 
-.co-logo > :not(.co-index) {
-  transition: transform 0.5s var(--ease);
-}
-
-.co:hover .co-logo > :not(.co-index) {
-  transform: scale(1.04);
-}
-
-.co-index {
-  position: absolute;
-  top: 18px;
-  left: 22px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: var(--sage);
-}
-
 .co-logo-img {
-  max-width: 78%;
-  max-height: 52px;
+  max-width: 70%;
+  max-height: 40px;
   width: auto;
   height: auto;
 }
 
 /* Square marks (Olla's pot) need more height than a wordmark. */
 .co-logo-img.co-logo-mark {
-  max-height: 150px;
+  max-height: 112px;
 }
 
 .co-body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 28px 32px 30px;
-}
-
-.co-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 0;
-  margin-bottom: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--label);
-}
-
-.co-meta span + span::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  margin: 0 12px 3px;
-  border-radius: 50%;
-  background: var(--sage-light);
+  padding: 22px 26px 24px;
 }
 
 .co-name {
-  font-size: 30px;
+  font-size: 23px;
   letter-spacing: -0.01em;
 }
 
@@ -699,8 +648,8 @@ ul {
 
 .co-desc {
   max-width: 46ch;
-  margin-top: 12px;
-  font-size: 15.5px;
+  margin-top: 8px;
+  font-size: 14.5px;
   line-height: 1.6;
 }
 
@@ -709,16 +658,16 @@ ul {
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
+  gap: 8px 20px;
   margin-top: auto;
-  padding-top: 24px;
+  padding-top: 18px;
 }
 
 .co-links a {
   display: inline-flex;
   gap: 6px;
   padding: 4px 0;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--forest);
@@ -735,26 +684,26 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 12px 18px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  border-radius: 9px;
   background: #141414;
   color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
 
 .clpper-scissors {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   margin: 0 1px;
   filter: invert(1);
 }
 
 .logo-swingai {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 500;
   color: #1f3d2b;
 }
@@ -1144,15 +1093,11 @@ ul {
   }
 
   .co-logo {
-    height: 200px;
+    height: 150px;
   }
 
   .co-body {
-    padding: 24px 24px 26px;
-  }
-
-  .co-name {
-    font-size: 26px;
+    padding: 20px 22px 22px;
   }
 }
 
