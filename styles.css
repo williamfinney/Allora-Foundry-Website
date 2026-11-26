@@ -356,13 +356,13 @@ ul {
   transition: clip-path 0.35s var(--ease);
 }
 
-/* Once the bracket closes, it fills with brand forest. */
+/* Once the bracket closes, it fills with a light mint. */
 .nav-cta:hover,
 .nav-cta:focus-visible,
 .hero .btn:hover,
 .hero .btn:focus-visible {
-  background: var(--forest);
-  color: var(--paper);
+  background: var(--mint-deep);
+  color: var(--forest);
   transition-delay: 0.15s;
 }
 
@@ -613,7 +613,7 @@ ul {
   gap: 14px;
   padding: 28px;
   text-align: center;
-  background: var(--forest);
+  background: var(--mint-deep);
   opacity: 0;
   transition: opacity 0.25s var(--ease);
   pointer-events: none;
@@ -627,7 +627,7 @@ ul {
 .portfolio-card-hover p {
   font-size: 14px;
   line-height: 1.55;
-  color: var(--paper);
+  color: var(--text-muted);
 }
 
 .portfolio-card-link {
@@ -636,7 +636,7 @@ ul {
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--paper);
+  color: var(--forest);
 }
 
 .portfolio-card-body {
